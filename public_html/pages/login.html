@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="col-md-4 panel panel-primary" style="padding-bottom: 10px" ng-controller="LoginController">
+        <h1 class="panel-heading">Login Page</h1>
+        <div >
+            <form role="form" ng-submit="login()">
+                 <label>Username</label>
+                 <input type="text" ng-model="username" class="form-control" placeholder="Username" required>
+                <span class="error">Required!</span><br>
+                  <label>Password</label>
+                  <input type="password" ng-model="password" class="form-control" placeholder="Password" required>
+                <span class="error">Required!</span><br>
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+        <div class="col-md-7 panel panel-primary" style="padding-bottom: 10px" ng-controller="RouterController">
+        <h3 class="panel-heading">Register</h3>
+        <h4>Don't have an account?</h4>
+        <p>Register now for a free account to start use my web, it's quick and easy!</p>
+        <button type="button" ng-click="btnregister()" class="btn btn-primary">Register</button>
+        <h3 class="panel-heading">Change password</h3>
+        <h4>Your password not secrect?</h4>
+        <p>Change password now for security your account!</p>
+        <button type="button" ng-click="btnchangepass()" class="btn btn-primary">Change Password</button>
+    </div>
+</div>

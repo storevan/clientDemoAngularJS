@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="col-md-4 panel panel-primary" style="padding-bottom: 10px" ng-controller="SignUpController">
+        <h1 class="panel-heading">Register Page</h1>
+        <div >
+            <form role="form" ng-submit="changepass()">
+                 <label>Username</label>
+                 <input type="text" ng-model="username" class="form-control" placeholder="Username" required>
+                <span class="text-danger">Required!</span><br>
+                <label>Old Password</label>
+                  <input type="password" ng-model="oldPassword" class="form-control" placeholder="Old Password" required>
+                <span class="text-danger">Required!</span><br>
+                  <label>Password</label>
+                  <input type="password" ng-model="password" class="form-control" placeholder="Password" required>
+                <span class="text-danger">Required!</span><br>
+                <label>Re-Type Password</label>
+                  <input type="password" ng-model="retypePassword" class="form-control" placeholder="Re-Type Password" required>
+                <span class="text-danger">Required!</span><br>
+                <button type="submit" class="btn btn-primary">Change Pass</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+        <div class="col-md-7 panel panel-primary" style="padding-bottom: 10px" ng-controller="RouterController">
+        <h3 class="panel-heading">Change password</h3>
+        <h4>Your password not secrect?</h4>
+        <p>Change password now for security your account!</p>
+    </div>
+</div>

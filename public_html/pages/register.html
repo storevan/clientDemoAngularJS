@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="col-md-4 panel panel-primary" style="padding-bottom: 10px" ng-controller="SignUpController">
+        <h1 class="panel-heading">Register Page</h1>
+        <div >
+            <form role="form" ng-submit="register()">
+                 <label>Username</label>
+                 <input type="text" ng-model="username" class="form-control" placeholder="Username" required>
+                <span class="text-danger">Required!</span><br>
+                  <label>Password</label>
+                  <input type="password" ng-model="password" class="form-control" placeholder="Password" required>
+                <span class="text-danger">Required!</span><br>
+                <label>Re-Type Password</label>
+                  <input type="password" ng-model="retypePassword" class="form-control" placeholder="Re-Type Password" required>
+                <span class="text-danger">Required!</span><br>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+        <div class="col-md-7 panel panel-primary" style="padding-bottom: 10px" ng-controller="RouterController">
+        <h3 class="panel-heading">Register</h3>
+        <h4>Don't have an account?</h4>
+        <p>Register now for a free account to start use my web, it's quick and easy!</p>
+    </div>
+</div>

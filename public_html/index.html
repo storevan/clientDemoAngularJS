@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Demo Angular JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6/css/bootstrap.min.css">
+        <script language="javascript" src="js/libs/angular/angular.js"></script>
+        <script src="bootstrap-3.3.6/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <style>
+            body { background: url(resource/img/back-ground.jpg);background-repeat: no-repeat;background-size: 100% 100%; }
+            .container { background: #fff; }
+        </style>
+        <script language="javascript" src="js/controller.js"></script>
+    </head>
+    <body ng-app='myapp'>
+        <div ng-view></div>
+    </body>
+</html>

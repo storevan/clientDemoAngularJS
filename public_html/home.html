@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Demo Angular JS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6/css/bootstrap.min.css">
+        <script language="javascript" src="js/libs/angular/angular.js"></script>
+        <script language="javascript" src="js/locationController.js"></script>
+        <script language="javascript" src="js/userController.js"></script>
+        <script src="bootstrap-3.3.6/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <style>
+            body { background: url(resource/img/back-ground.jpg);background-repeat: no-repeat;background-size: 100% 100%; }
+            .container { background: #fff; }
+        </style>
+    </head>
+    <body>
+        <div class="container"   ng-app="homeApp">
+            <div id="divHeader" class="col-md-12">
+                <header>
+                    <img class="img-rounded col-md-12" src="resource/img/banner.jpg"/>
+                </header>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="#userinfo"><span class="glyphicon glyphicon-user"></span> User Manager</a></li>
+                        <li><a href="#catlocation"><span class="glyphicon glyphicon-credit-card"></span> Cat Location</a></li>
+                    </ul>
+                    <div class="navbar-right" ng-controller="LogoutController">
+                        <!--<button class="btn btn-danger navbar-btn">Register</button>-->
+                        <button ng-click="logout()" type="button" class="btn btn-info navbar-btn">Log out</button>
+                    </div>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="active"><a href="#/">Home</a></li>
+                    <li><a href="#userinfo">User Manager</a></li>
+                    <li><a href="#catlocation">Cat Location</a></li>
+                </ul>
+
+            </div>
+            <div class="col-md-12" style="min-height: 300px">
+                <div ng-view></div>
+            </div> 
+            <div id="divFooter" class="col-md-12">
+                <img class="col-md-12" src="//static.eclick.vn/uploads/source/2016/03/22/46977h386100253868wh512621.gif" style="height: 88px;" class="eclick_img">
+                <footer>
+                    <p>Design by Nguyen Duy Hung</p>
+                    <p>&copy; 2016 -  in Magebay. </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

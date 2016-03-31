@@ -1,0 +1,53 @@
+<div class="row" ng-controller="UserController" style=" overflow-y: scroll;">
+    <button type="button" ng-click="preInsert()" class="btn btn-info navbar-btn">Insert</button>
+    <table class="table table-striped">
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>National</th>
+            <th>Province</th>
+            <th>Address</th>
+            <th>Zip Code</th>
+            <th>About</th>
+            <th>Website</th>
+            <th>Facebook</th>
+            <th>Twitter</th>
+            <th>Other</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="item in user">
+            <td>{{item.username}}</td>
+            <td>{{item.role=='1'?'Admin':'User'}}</td>
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.nationalName}}</td>
+            <td>{{item.provinceName}}</td>
+            <td>{{item.homeAddress}}</td>
+            <td>{{item.zipCode}}</td>
+            <td>{{item.about}}</td>
+            <td>{{item.website}}</td>
+            <td>{{item.facebook}}</td>
+            <td>{{item.twitter}}</td>
+            <td>{{item.other}}</td>
+            <td><a ng-click="preUpdate($index)"><img width="70px" height="30px" src="http://www.clker.com/cliparts/e/0/H/N/J/2/edit-button-blue-md.png"/>
+                </a>
+                <a ng-click="onDelete($index)"><img width="70px" height="30px" src="http://www.clker.com/cliparts/L/8/M/t/O/G/delete-button-blue-md.png"/></a></td>
+        </tr>
+    </table>
+</div>
+<!--    <ul class="pagination navbar-right">
+        <li><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>-->
