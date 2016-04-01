@@ -1,7 +1,7 @@
 
-homeApp.controller('UserController', function ($scope, $http, $location) {
+homeApp.controller('UserController', function ($scope, $http, $location,$rootScope) {
     var load = function () {
-        $http.get('http://localhost/DemoRestful/public/rest/user/index')
+        $http.get($rootScope.appUrl+'rest/user/index')
                 .success(function (data, status, headers, config) {
                     console.log(data.user);
                     if (data.msgCode == 'success') {
@@ -26,7 +26,7 @@ homeApp.controller('UserController', function ($scope, $http, $location) {
         });
         console.log($scope.user[index].userId);
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/user/delete', data)
+        $http.post($rootScope.appUrl+'rest/user/delete', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         alert(data.info);
@@ -48,9 +48,9 @@ homeApp.controller('UserController', function ($scope, $http, $location) {
     
 });
 
-homeApp.controller('InsertUserController', function ($scope, $http, $location) {
+homeApp.controller('InsertUserController', function ($scope, $http, $location,$rootScope) {
     var load = function () {
-        $http.get('http://localhost/DemoRestful/public/rest/location/getParentLocation')
+        $http.get($rootScope.appUrl+'rest/location/getParentLocation')
                 .success(function (data, status, headers, config) {
                     console.log(data.parentLocation);
                     if (data.msgCode == 'success') {
@@ -74,7 +74,7 @@ homeApp.controller('InsertUserController', function ($scope, $http, $location) {
             parentId: $scope.national,
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/location/getLocationByParent', data)
+        $http.post($rootScope.appUrl+'rest/location/getLocationByParent', data)
                 .success(function (data, status, headers, config) {
                     console.log(data.user);
                     if (data.msgCode == 'success') {
@@ -110,7 +110,7 @@ homeApp.controller('InsertUserController', function ($scope, $http, $location) {
             other: angular.isUndefined($scope.other) ? "" : $scope.other,
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/user/insert', data)
+        $http.post($rootScope.appUrl+'rest/user/insert', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         alert(data.info);
@@ -127,13 +127,13 @@ homeApp.controller('InsertUserController', function ($scope, $http, $location) {
     }
 });
 
-homeApp.controller('UpdateUserController', function ($scope, $http, $location, $routeParams) {
+homeApp.controller('UpdateUserController', function ($scope, $http, $location, $routeParams,$rootScope) {
     var load = function () {
         var data = $.param({
             userId: $routeParams['id'],
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/user/preUpdate', data)
+        $http.post($rootScope.appUrl+'rest/user/preUpdate', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         $scope.userItem = data.userItem;
@@ -180,7 +180,7 @@ homeApp.controller('UpdateUserController', function ($scope, $http, $location, $
             other: angular.isUndefined($scope.userItem[0].other) ? "" : $scope.userItem[0].other,
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/user/update', data)
+        $http.post($rootScope.appUrl+'rest/user/update', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         alert(data.info);
@@ -199,7 +199,7 @@ homeApp.controller('UpdateUserController', function ($scope, $http, $location, $
             parentId: $scope.national,
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/location/getLocationByParent', data)
+        $http.post($rootScope.appUrl+'rest/location/getLocationByParent', data)
                 .success(function (data, status, headers, config) {
                     console.log(data.user);
                     if (data.msgCode == 'success') {

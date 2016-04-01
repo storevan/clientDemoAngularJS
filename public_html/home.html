@@ -11,6 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="bootstrap-3.3.6/css/bootstrap.min.css">
         <script language="javascript" src="js/libs/angular/angular.js"></script>
+        <script language="javascript" src="js/config/config_home.js"></script>
         <script language="javascript" src="js/locationController.js"></script>
         <script language="javascript" src="js/userController.js"></script>
         <script src="bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -20,8 +21,8 @@ and open the template in the editor.
             .container { background: #fff; }
         </style>
     </head>
-    <body>
-        <div class="container"   ng-app="homeApp">
+    <body ng-app="homeApp" ng-controller="HomeController">
+        <div class="container">
             <div id="divHeader" class="col-md-12">
                 <header>
                     <img class="img-rounded col-md-12" src="resource/img/banner.jpg"/>
@@ -32,7 +33,7 @@ and open the template in the editor.
                         <li><a href="#userinfo"><span class="glyphicon glyphicon-user"></span> User Manager</a></li>
                         <li><a href="#catlocation"><span class="glyphicon glyphicon-credit-card"></span> Cat Location</a></li>
                     </ul>
-                    <div class="navbar-right" ng-controller="LogoutController">
+                    <div class="navbar-right" >
                         <!--<button class="btn btn-danger navbar-btn">Register</button>-->
                         <button ng-click="logout()" type="button" class="btn btn-info navbar-btn">Log out</button>
                     </div>

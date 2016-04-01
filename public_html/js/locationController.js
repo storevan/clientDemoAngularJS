@@ -1,40 +1,6 @@
-var homeApp = angular.module('homeApp', []);
-homeApp.config(['$routeProvider', '$locationProvider',
-    function ($routeProvider, $locationProvider) {
-        $routeProvider.when('/catlocation', {
-            templateUrl: 'pages/location/catlocation.html',
-            controller: 'LocationController'
-        }).when('/insertlocation', {
-            templateUrl: 'pages/location/insertLocation.html',
-            controller: 'LocationController'
-        }).when('/updatelocation/:id', {
-            templateUrl: 'pages/location/updatelocation.html',
-            controller: 'LocationController'
-        }).when('/userinfo', {
-            templateUrl: 'pages/usermanager/usermanager.html',
-            controller: 'UserController'
-        }).when('/insertuser', {
-            templateUrl: 'pages/usermanager/insertUser.html',
-            controller: 'UserController'
-        }).when('/updateuser/:id', {
-            templateUrl: 'pages/usermanager/updateUser.html',
-            controller: 'UserController'
-        }).otherwise({
-            redirectTo: '/'
-        });
-        //        $locationProvider.html5Mode(true); //Remove the '#' from URL.
-    }
-]);
-
-homeApp.controller('LogoutController', function ($scope) {
-    $scope.logout = function () {
-        window.location = 'http://localhost:8383/DemoAngularJS/index.html';
-    };
-});
-
-homeApp.controller('LocationController', function ($scope, $http, $location) {
+homeApp.controller('LocationController', function ($scope, $http, $location, $rootScope) {
     var load = function () {
-        $http.get('http://localhost/DemoRestful/public/rest/location/index')
+        $http.get($rootScope.appUrl + 'rest/location/index')
                 .success(function (data, status, headers, config) {
                     console.log(data.catLocation);
                     if (data.msgCode == 'success') {
@@ -59,7 +25,7 @@ homeApp.controller('LocationController', function ($scope, $http, $location) {
         });
         console.log($scope.location[index].locationId);
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/location/delete', data)
+        $http.post($rootScope.appUrl + 'rest/location/delete', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         alert(data.info);
@@ -74,15 +40,15 @@ homeApp.controller('LocationController', function ($scope, $http, $location) {
             alert('[' + status + ']' + data);
         });
     };
-    
-    $scope.preUpdate=function(index){
-        $location.path('/updatelocation/'+$scope.location[index].locationId)
+
+    $scope.preUpdate = function (index) {
+        $location.path('/updatelocation/' + $scope.location[index].locationId)
     };
 });
 
-homeApp.controller('preInsertController', function ($scope, $http, $location) {
+homeApp.controller('preInsertController', function ($scope, $http, $location, $rootScope) {
     var load = function () {
-        $http.get('http://localhost/DemoRestful/public/rest/location/getParentLocation')
+        $http.get($rootScope.appUrl + 'rest/location/getParentLocation')
                 .success(function (data, status, headers, config) {
                     console.log(data.parentLocation);
                     if (data.msgCode == 'success') {
@@ -105,7 +71,7 @@ homeApp.controller('preInsertController', function ($scope, $http, $location) {
             parentId: $scope.parentId
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/location/insert', data)
+        $http.post($rootScope.appUrl + 'rest/location/insert', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         alert(data.info);
@@ -122,20 +88,20 @@ homeApp.controller('preInsertController', function ($scope, $http, $location) {
     }
 });
 
-homeApp.controller('UpdateLocationController', function ($scope, $http, $location,$routeParams) {
+homeApp.controller('UpdateLocationController', function ($scope, $http, $location, $routeParams, $rootScope) {
     var load = function () {
         var data = $.param({
             locationId: $routeParams['id'],
         });
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/location/preUpdate',data)
+        $http.post($rootScope.appUrl + 'rest/location/preUpdate', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         $scope.locationItem = data.locationItem;
-                        $scope.parent= data.parentLocation;
-                        if(data.locationItem[0].parentId>0){
+                        $scope.parent = data.parentLocation;
+                        if (data.locationItem[0].parentId > 0) {
                             $scope.parentId = data.locationItem[0].parentId;
-                        }else{
+                        } else {
                             $scope.parentId = '-1';
                         }
                     } else if (data.msgCode == 'fail') {
@@ -155,9 +121,8 @@ homeApp.controller('UpdateLocationController', function ($scope, $http, $locatio
             locationName: $scope.locationItem[0].locationName,
             parentId: $scope.parentId
         });
-        console.log(data);
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $http.post('http://localhost/DemoRestful/public/rest/location/update', data)
+        $http.post($rootScope.appUrl + 'rest/location/update', data)
                 .success(function (data, status, headers, config) {
                     if (data.msgCode == 'success') {
                         alert(data.info);

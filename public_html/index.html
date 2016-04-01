@@ -17,9 +17,10 @@ and open the template in the editor.
             body { background: url(resource/img/back-ground.jpg);background-repeat: no-repeat;background-size: 100% 100%; }
             .container { background: #fff; }
         </style>
+        <script language="javascript" src="js/config/config_index.js"></script>
         <script language="javascript" src="js/controller.js"></script>
     </head>
-    <body ng-app='myapp'>
+    <body ng-app='myapp'  ng-controller="AppCtrl">
         <div ng-view></div>
     </body>
 </html>
